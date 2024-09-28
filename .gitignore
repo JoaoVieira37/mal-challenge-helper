@@ -1,4 +1,4 @@
-database.sqlite
-response.json
-
 node_modules/
+dist/
+
+chatgpt_response.md
