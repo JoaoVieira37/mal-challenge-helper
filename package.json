@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "A website that allows searching through MAL by different topics. The objective is to help with AWC.",
   "main": "src/index.ts",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JoaoVieira37/mal-challenge-helper.git"

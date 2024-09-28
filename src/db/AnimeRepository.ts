@@ -13,6 +13,13 @@ export async function findAnimeById(id: number) {
         .executeTakeFirst()
 }
 
+export async function findAnimeByMalId(mal_id: string) {
+    return await db.selectFrom('anime')
+        .where('mal_id', '=', mal_id)
+        .selectAll()
+        .executeTakeFirst()
+}
+
 export async function insertAnime(anime: NewAnime) {
     return await db.insertInto('anime')
         .values(anime)

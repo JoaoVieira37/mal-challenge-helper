@@ -1,5 +1,6 @@
 import express from 'express'
 import path from "path"
+import * as AnimeRepository from "./db/AnimeRepository"
 
 console.log(__dirname)
 
@@ -13,9 +14,18 @@ app.get(['/', '/index'], (req, res) => {
 })
 
 app.get('/submit', (req, res) => {
-    res.send("Thanks")
-    console.log("Received submit request")
-    console.log(req.query)
+    let mal_id = req.query.mal_id as string | undefined
+    if (mal_id && mal_id !== '') {
+        AnimeRepository.findAnimeByMalId(mal_id)
+            .then((anime) => {
+                res.json(anime)
+            })
+            .catch((err) => {
+                res.status(404).send(err)
+            })
+    } else {
+        res.status(400).send("mal_id is required")
+    }
 })
 
 app.get('/favicon.ico', (req, res) => {
